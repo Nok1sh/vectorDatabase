@@ -1,0 +1,122 @@
+[
+  {
+    "question": "Что такое UX и UI? В чем разница между ними?",
+    "relevante": "1/4"
+  },
+  {
+    "question": "Назовите основные принципы UX-дизайна.",
+    "relevante": "1/4"
+  },
+  {
+    "question": "Основные типы данных в языке JavaScript.",
+    "relevante": "2/4"
+  },
+  {
+    "question": "Что такое API и как работать с ним в JavaScript",
+    "relevante": "3/4"
+  },
+  {
+    "question": "Адаптивный дизайн и способы его организации",
+    "relevante": "1/4"
+  },
+  {
+    "question": "Отличия TypeScript от JavaScript",
+    "relevante": "1/4"
+  },
+  {
+    "question": "Как структура дизайн-макета влияет на разработку веб-приложения?",
+    "relevante": "2/4"
+  },
+  {
+    "question": "Какие основные HTML-теги используются для структуры веб-страницы?",
+    "relevante": "2/4"
+  },
+  {
+    "question": "CSS-свойства для анимации элементов.",
+    "relevante": "2/4"
+  },
+  {
+    "question": "Медиазапросы (media queries) в CSS.",
+    "relevante": "1/4"
+  },
+  {
+    "question": "Оптимизация изображений для веб-страниц.",
+    "relevante": "2/4"
+  },
+  {
+    "question": "Управление DOM с помощью JavaScript.",
+    "relevante": "3/4"
+  },
+  {
+    "question": "Регулярные выражения и их применение для валидации.",
+    "relevante": "1/4"
+  },
+  {
+    "question": "Асинхронный JavaScript.",
+    "relevante": "2/4"
+  },
+  {
+    "question": "Функции в JavaScript. Способы объявления функций.",
+    "relevante": "2/4"
+  },
+  {
+    "question": "Чем отличаются SCSS и SASS от обычного CSS?",
+    "relevante": "1/4"
+  },
+  {
+    "question": "Какие преимущества дают препроцессоры CSS?",
+    "relevante": "1/4"
+  },
+  {
+    "question": "Организация файловой структуры проекта по БЭМ.",
+    "relevante": "1/4"
+  },
+  {
+    "question": "Единицы измерения в CSS.",
+    "relevante": "1/4"
+  },
+  {
+    "question": "Что такое БЭМ и зачем он нужен?",
+    "relevante": "1/4"
+  },
+  {
+    "question": "Отправка и получение данных.",
+    "relevante": "3/4"
+  },
+  {
+    "question": "Какие методы HTTP используются при работе с API?",
+    "relevante": "3/4"
+  },
+  {
+    "question": "Мультимедиа-содержимое (аудио, видео) в HTML-страницах.",
+    "relevante": "3/4"
+  },
+  {
+    "question": "Блочная модель.",
+    "relevante": "1/4"
+  },
+  {
+    "question": "Трансформации (transform) в CSS",
+    "relevante": "1/4"
+  },
+  {
+    "question": "Границы видимости в JavaScript.",
+    "relevante": "2/4"
+  },
+  {
+    "question": "Особенности дисплеев и устройств при верстке страниц.",
+    "relevante": "1/4"
+  },
+  {
+    "question": "Получение и обработка данных из форм средствами JavaScript.",
+    "relevante": "3/4"
+  },
+  {
+    "question": "Атрибуты HTML5 для валидации форм.",
+    "relevante": "2/4"
+  },
+  {
+    "question": "Псевдоклассы в CSS.",
+    "relevante": "2/4"
+  }
+]
