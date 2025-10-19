@@ -69,7 +69,7 @@ class Database:
             for i in indicators:
                 for j in i["indicators"]:
                     self.text_indicators.append(j["text"])
-                    self.code_indicators.append({"code_indicator": j["code"]})
+                    self.code_indicators.append({"code_indicator": j["code"], "compentency_code": i["compentency_code"]})
         
         self.collection.add(
             ids=[str(uuid.uuid4()) for _ in self.text_indicators],
@@ -122,32 +122,31 @@ class Database:
             n_results=self.n_indicators_per_question,
             include=["distances", "embeddings", "documents", "metadatas"]
         )
-        print(self.text_questions[number_question])
         return results
 
-print("web")
+
 database = Database("web")
 
 # database.delete_database("delete_database")
 database.add_indicators_in_database_from_json()
 
-database.analyze_questions()
+# database.analyze_questions()
 
-print(database.get_results_for_one_question(5)["documents"])
+# print(database.get_results_for_one_question(5))
 
-# print("economy")
-# database.add_new_collection("economy")
+print("economy")
+database.add_new_collection("economy")
 
-# database.add_indicators_in_database_from_json()
+database.add_indicators_in_database_from_json()
 
 # database.analyze_questions()
 
 # print(database.get_results_for_all_questions)
 
-# print("psihology")
-# database.add_new_collection("psihology")
+print("psihology")
+database.add_new_collection("psihology")
 
-# database.add_indicators_in_database_from_json()
+database.add_indicators_in_database_from_json()
 
 # database.analyze_questions()
 

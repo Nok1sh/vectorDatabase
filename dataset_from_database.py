@@ -23,12 +23,12 @@ result_json = []
 for question, indicat, metadata in zip(questions_list, results["documents"], results["metadatas"]):
     analyze_qustion = {"question": question, "indicators": []}
     for i in range(database.n_indicators_per_question):
-        data = {"code": metadata[i]["code_indicator"], "text": indicat[i]}
+        data = {"compentency_code": metadata[i]["compentency_code"],"code": metadata[i]["code_indicator"], "text": indicat[i]}
         analyze_qustion["indicators"].append(data)
     
     result_json.append(analyze_qustion)
 
-with open("datasets/test_{category}.json", "w", encoding="UTF-8") as file:
+with open(f"datasets/test_{category}.json", "w", encoding="UTF-8") as file:
     json.dump(result_json, file, indent=2, ensure_ascii=False)
 
 
