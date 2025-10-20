@@ -2,33 +2,32 @@ import json
 import re
 from vector_database import Database
 
-category = "web"
+categories = ["web", "economy", "psihology"]
 
-database = Database(category)
+for category in categories:
+    database = Database(category)
+    database.analyze_questions()
 
+    questions_list = []
+    with open(f"questions/questions_{category}.txt", encoding="UTF-8") as questions:
+        for question in questions:
+            start_string = re.search(r'\D\w\S', question)
+            edit_question = question[start_string.span()[0]+1:].replace("\n", "") if start_string else question.replace("\n", "")
+            questions_list.append(edit_question)
 
-questions_list = []
-database.analyze_questions()
+    results = database.get_results_for_all_questions
 
-with open(f"questions/questions_{category}.txt") as questions:
-    for question in questions:
-        start_string = re.search(r'\D\w\S', question)
-        edit_question = question[start_string.span()[0]+1:].replace("\n", "") if start_string else question.replace("\n", "")
-        questions_list.append(edit_question)
+    result_json = []
+    for question, indicat, metadata in zip(questions_list, results["documents"], results["metadatas"]):
+        analyze_qustion = {"question": question, "indicators": []}
+        for i in range(database.n_indicators_per_question):
+            data = {
+                "compentency_code": metadata[i]["compentency_code"],
+                "code": metadata[i]["code_indicator"],
+                "text": indicat[i]
+            }
+            analyze_qustion["indicators"].append(data)
+        result_json.append(analyze_qustion)
 
-results = database.get_results_for_all_questions
-
-
-result_json = []
-for question, indicat, metadata in zip(questions_list, results["documents"], results["metadatas"]):
-    analyze_qustion = {"question": question, "indicators": []}
-    for i in range(database.n_indicators_per_question):
-        data = {"compentency_code": metadata[i]["compentency_code"],"code": metadata[i]["code_indicator"], "text": indicat[i]}
-        analyze_qustion["indicators"].append(data)
-    
-    result_json.append(analyze_qustion)
-
-with open(f"datasets/test_{category}.json", "w", encoding="UTF-8") as file:
-    json.dump(result_json, file, indent=2, ensure_ascii=False)
-
-
+    with open(f"datasets/test_{category}.json", "w", encoding="UTF-8") as file:
+        json.dump(result_json, file, indent=2, ensure_ascii=False)

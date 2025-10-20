@@ -1,0 +1,7 @@
+### PyCharm ignore files
+.idea/
+__pycache__/
+.DS_Store
+
+### reports ignore dir
+reports/
