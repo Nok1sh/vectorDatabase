@@ -125,8 +125,8 @@ class Database:
         return results
 
 
-database = Database("web")
-print("web")
+#database = Database("web")
+#print("web")
 
 # database.delete_database("delete_database")
 database.add_indicators_in_database_from_json()
@@ -135,19 +135,19 @@ database.add_indicators_in_database_from_json()
 
 # print(database.get_results_for_one_question(5))
 
-print("economy")
-database.add_new_collection("economy")
+#print("economy")
+#database.add_new_collection("economy")
 
-database.add_indicators_in_database_from_json()
+#database.add_indicators_in_database_from_json()
 
 # database.analyze_questions()
 
 # print(database.get_results_for_all_questions)
 
-print("psihology")
-database.add_new_collection("psihology")
+#print("psihology")
+#database.add_new_collection("psihology")
 
-database.add_indicators_in_database_from_json()
+#database.add_indicators_in_database_from_json()
 
 # database.analyze_questions()
 
