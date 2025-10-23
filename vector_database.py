@@ -9,7 +9,7 @@ from typing import List, Dict
 
 class Database:
 
-    TRANSFORMER = embedding_functions.SentenceTransformerEmbeddingFunction(model_name="all-MiniLM-L12-v2")
+    TRANSFORMER = embedding_functions.SentenceTransformerEmbeddingFunction(model_name="intfloat/multilingual-e5-large")
 
     def __init__(self, collection: str, path_database="indicators_vector_database"):
         self.path_database = path_database
@@ -123,31 +123,3 @@ class Database:
             include=["distances", "embeddings", "documents", "metadatas"]
         )
         return results
-
-
-database = Database("web")
-
-# database.delete_database("delete_database")
-database.add_indicators_in_database_from_json()
-
-# database.analyze_questions()
-
-# print(database.get_results_for_one_question(5))
-
-print("economy")
-database.add_new_collection("economy")
-
-database.add_indicators_in_database_from_json()
-
-# database.analyze_questions()
-
-# print(database.get_results_for_all_questions)
-
-print("psihology")
-database.add_new_collection("psihology")
-
-database.add_indicators_in_database_from_json()
-
-# database.analyze_questions()
-
-# print(database.get_results_for_all_questions)
