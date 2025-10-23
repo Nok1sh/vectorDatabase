@@ -129,7 +129,7 @@ class Database:
 #print("web")
 
 # database.delete_database("delete_database")
-database.add_indicators_in_database_from_json()
+#database.add_indicators_in_database_from_json()
 
 # database.analyze_questions()
 
