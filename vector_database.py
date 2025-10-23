@@ -94,10 +94,9 @@ class Database:
             path = f"{self.name}_indicators"
         self.database.delete_collection(path)
     
-    def delete_database(self, code=None):
-        if code == "delete_database":
-            self.database.reset()
-            # shutil.rmtree(self.path_database)
+    def delete_database(self):
+        self.database.reset()
+        # shutil.rmtree(self.path_database)
 
     @property
     def get_names_collections(self):
