@@ -37,8 +37,3 @@ def plot_comparison(categories, avg_relevante_values, save_path=None):
         print(f"График сохранен в {save_path}")
 
     plt.show()
-
-if __name__ == "__main__":
-    categories = ["web", "economy", "psihology"]
-    avg_relevante_values = load_comparison_data(categories)
-    plot_comparison(categories, avg_relevante_values, save_path="comparisons/comparison_plot.png")

@@ -2,8 +2,7 @@ import json
 import re
 from vector_database import Database
 
-def create_datasets():
-    categories = ["web", "economy", "psihology"]
+def create_datasets(categories):
 
     for category in categories:
         database = Database(category)

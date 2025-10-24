@@ -1,7 +1,6 @@
 import json
 
-def comparison():
-    categories = ["web", "economy", "psihology"]
+def comparison(categories):
 
     for category in categories:
         with open(f"embedding_datasets/{category}_dataset.json", "r", encoding="UTF-8") as dataset_orig, open(f"embedding_datasets/test_{category}.json", "r", encoding="UTF-8") as test_data:
