@@ -1,5 +1,13 @@
 import json
+import random
 import matplotlib.pyplot as plt
+
+def generate_colors(n):
+    colors = []
+    for i in range(n):
+        color = '#{:06x}'.format(random.randint(0, 0xFFFFFF))
+        colors.append(color)
+    return colors
 
 def load_comparison_data(categories):
     """Загружает данные сравнения из JSON-файлов и вычисляет средние совпадения."""
@@ -20,7 +28,8 @@ def load_comparison_data(categories):
 def plot_comparison(categories, avg_relevante_values, save_path=None):
     """Строит столбчатую диаграмму для средних совпадений."""
     plt.figure(figsize=(8, 6))
-    bars = plt.bar(categories, avg_relevante_values, color=['#36A2EB', '#FF6384', '#FFCE56'])
+    bars = plt.bar(categories, avg_relevante_values, color=generate_colors(len(categories)))
+    plt.xticks(rotation=45)
     plt.title('Среднее совпадение индикаторов по категориям')
     plt.xlabel('Категория')
     plt.ylabel('Среднее совпадение (из 4)')
