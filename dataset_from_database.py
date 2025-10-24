@@ -30,5 +30,5 @@ def create_datasets():
                 analyze_qustion["indicators"].append(data)
             result_json.append(analyze_qustion)
 
-        with open(f"datasets/test_{category}.json", "w", encoding="UTF-8") as file:
+        with open(f"embedding_datasets/test_{category}.json", "w", encoding="UTF-8") as file:
             json.dump(result_json, file, indent=2, ensure_ascii=False)

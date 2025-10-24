@@ -5,8 +5,8 @@ def comparison():
 
     for category in categories:
         try:
-            with open(f"datasets/{category}_dataset.json", "r", encoding="UTF-8") as dataset_orig, \
-                    open(f"datasets/test_{category}.json", "r", encoding="UTF-8") as test_data:
+            with open(f"embedding_datasets/{category}_dataset.json", "r", encoding="UTF-8") as dataset_orig, \
+                    open(f"embedding_datasets/test_{category}.json", "r", encoding="UTF-8") as test_data:
                 dataset_orig = json.load(dataset_orig)
                 test_data = json.load(test_data)
 
