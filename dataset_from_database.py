@@ -18,13 +18,14 @@ def create_datasets(categories):
         results = database.get_results_for_all_questions
 
         result_json = []
-        for question, indicat, metadata in zip(questions_list, results["documents"], results["metadatas"]):
+        for question, indicat, metadata, result in zip(questions_list, results["documents"], results["metadatas"], results["distances"]):
             analyze_qustion = {"question": question, "indicators": []}
             for i in range(database.n_indicators_per_question):
                 data = {
                     "compentency_code": metadata[i]["compentency_code"],
                     "code": metadata[i]["code_indicator"],
-                    "text": indicat[i]
+                    "text": indicat[i],
+                    "score": result[i]
                 }
                 analyze_qustion["indicators"].append(data)
             result_json.append(analyze_qustion)

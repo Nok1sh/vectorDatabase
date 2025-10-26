@@ -9,27 +9,29 @@ from typing import List, Dict
 
 class Database:
 
-    TRANSFORMER = embedding_functions.SentenceTransformerEmbeddingFunction(model_name="intfloat/multilingual-e5-large")
+    TRANSFORMER = embedding_functions.SentenceTransformerEmbeddingFunction(model_name="dragonkue/BGE-m3-ko")
 
     def __init__(self, collection: str, path_database="indicators_vector_database"):
         self.path_database = path_database
         self.name: str = collection
         self.database = chromadb.PersistentClient(self.path_database, settings=chromadb.config.Settings(allow_reset=True))
-        self.collection = self.database.get_or_create_collection(name=f"{self.name}_indicators", embedding_function=Database.TRANSFORMER)
+        self.collection = self.database.get_or_create_collection(name=f"{self.name}_indicators",
+                                                                 embedding_function=Database.TRANSFORMER,
+                                                                 metadata={"hnsw:space": "cosine"})
 
         self.n_indicators_per_question: int = 4
 
         self.text_indicators: List[str] = []
         self.code_indicators: List[Dict[str, str]] = []
-        
+
         self.text_questions: List[str] = []
-    
+
     @property
     def update_parameters(self):
         self.text_indicators: List[str] = []
         self.code_indicators: List[Dict[str, str]] = []
         self.text_questions: List[str] = []
-    
+
     def add_new_collection(self, collection):
         self.update_parameters
         self.name: str = collection
@@ -69,19 +71,21 @@ class Database:
             for i in indicators:
                 for j in i["indicators"]:
                     self.text_indicators.append(j["text"])
-                    self.code_indicators.append({"code_indicator": j["code"], "compentency_code": i["compentency_code"]})
-        
+                    self.code_indicators.append({"code_indicator": j["code"],
+                                                 "compentency_code": i["compentency_code"],
+                                                 "text": j["text"]})
+
         self.collection.add(
             ids=[str(uuid.uuid4()) for _ in self.text_indicators],
             documents=self.text_indicators,
             metadatas=self.code_indicators
         )
-    
+
 
     def analyze_questions(self, path=None):
         if path is None:
             path = f"questions/questions_{self.name}.txt"
-        
+
         with open(path, "r", encoding="utf-8") as questions:
             for question in questions:
                 if question:
@@ -93,7 +97,7 @@ class Database:
         if path is None:
             path = f"{self.name}_indicators"
         self.database.delete_collection(path)
-    
+
     def delete_database(self):
         self.database.reset()
         # shutil.rmtree(self.path_database)
