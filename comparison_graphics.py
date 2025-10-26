@@ -25,14 +25,14 @@ def load_comparison_data(categories):
             avg_relevante_values.append(0)
     return avg_relevante_values
 
-def plot_comparison(categories, avg_relevante_values, save_path=None):
-    """Строит столбчатую диаграмму для средних совпадений."""
+def plot_comparison(categories, avg_relevante_values, save_path=None, title=None, ylabel=None):
+
     plt.figure(figsize=(8, 6))
     bars = plt.bar(categories, avg_relevante_values, color=generate_colors(len(categories)))
     plt.xticks(rotation=45)
-    plt.title('Среднее совпадение индикаторов по категориям')
+    plt.title('Среднее совпадение индикаторов по категориям' if title is None else title)
     plt.xlabel('Категория')
-    plt.ylabel('Среднее совпадение (из 4)')
+    plt.ylabel('Среднее совпадение (из 4)' if ylabel is None else ylabel)
     plt.ylim(0, 4)
     plt.grid(axis='y', linestyle='--', alpha=0.7)
 
